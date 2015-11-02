@@ -33,7 +33,7 @@ void loop() {
     Keyboard.press(KEY_DELETE);
     Keyboard.releaseAll();
     delay(600);
-    Keyboard.print("yourpassword!");
+    Keyboard.print("password!");
     Keyboard.write(KEY_RETURN);
     if (intruderDetected) {
       delay(2000);

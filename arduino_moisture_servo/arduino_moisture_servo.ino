@@ -25,16 +25,23 @@ void setup() {
 void loop() {
   int analogMoisture = analogRead(pinMoistureAnalog);
   digitalMoisture = digitalRead(pinMoistureDigital);
-  mappedMoisture = map(analogMoisture, 0, 1023, 0, 180);
-  if(lastMappedMoisture != mappedMoisture) {
+  mappedMoisture = map(analogMoisture, 300, 1023, 0, 180);
+  
+  Serial.print("Last mapped moisture : ");
+  Serial.println(lastMappedMoisture);
+  Serial.print("MappedMoisture : ");
+  Serial.println(mappedMoisture);
+  
+  
+  if(abs(lastMappedMoisture - mappedMoisture) > 3) {
     servoMesure.write(mappedMoisture, 20, true);
     lastMappedMoisture = mappedMoisture;  
-  }
-  if(digitalMoisture != lastDigitalMoisture) {
+    if(digitalMoisture != lastDigitalMoisture) {
        int flagAlertPosition = (digitalMoisture == 0 ? 90 : 180);
        servoAlert.write(flagAlertPosition, 40, true);
        lastDigitalMoisture = digitalMoisture;
     }
+  }
 
   Serial.print("Analog Moisture : ");
   Serial.println(analogMoisture);
