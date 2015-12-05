@@ -2,13 +2,13 @@
 #define DISPATCHER_H
 
 #include <Arduino.h>
-#include <Servo.h>
+#include <VarSpeedServo.h>
 
 class Dispatcher {
 
 private:
   int pin;
-  Servo servo;
+  VarSpeedServo servo;
 
   byte redPosition = 10;
   byte yellowPosition = 40;

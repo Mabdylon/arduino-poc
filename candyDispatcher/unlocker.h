@@ -2,15 +2,17 @@
 #define UNLOCKER_H
 
 #include <Arduino.h>
-#include <Servo.h>
+#include <VarSpeedServo.h>
 
 class Unlocker {
 
 private:
   int pin;
-  Servo servo;
-  int servoSpeed = 93;
-
+  VarSpeedServo servo;
+  int positionLeft = 0;
+  int positionRight = 180;
+  int servoSpeed = 70;
+  boolean tangoCount = 0;
 /*  
   bool forward;
   int intervalForward;
@@ -22,7 +24,7 @@ private:
 public:
   Unlocker(int);
 
-  //void turn();
+  void turn();
 
 };
 

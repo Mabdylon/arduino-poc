@@ -5,8 +5,12 @@ Unlocker::Unlocker(int unlockerPIN) {
   pin = unlockerPIN;
   servo.attach(pin);
   
-  servo.write(servoSpeed);
+  servo.write(positionLeft);
   
 }
 
+void Unlocker::turn() {
+  servo.write(positionRight, servoSpeed, true);
+  servo.write(positionLeft, servoSpeed, true);
+}
 

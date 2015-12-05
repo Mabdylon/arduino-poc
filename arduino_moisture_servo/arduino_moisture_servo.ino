@@ -14,7 +14,7 @@ int analogMoisture = 600;
 int maxMappedMoisture = 950;
 int minMappedMoisture = 350;
 int amountNeededToMove = 5;
-boolean DEBUG = true;
+boolean DEBUG = false;
 
 ISR(WDT_vect) {
   Sleepy::watchdogEvent();
@@ -56,7 +56,7 @@ void ifDiffIsEnoughMoveServo() {
   if (abs(lastMappedMoisture - mappedMoisture) > amountNeededToMove) {
     servoMesure.write(mappedMoisture, 20, true);
     lastMappedMoisture = mappedMoisture;
-    int flagAlertPosition = (digitalMoisture == 0 ? 90 : 180);
+    int flagAlertPosition = (digitalMoisture == 1 ? 90 : 180);
     servoAlert.write(flagAlertPosition, 50, true);
   }
 }

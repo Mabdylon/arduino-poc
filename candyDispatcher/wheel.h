@@ -2,13 +2,13 @@
 #define WHEEL_H
 
 #include <Arduino.h>
-#include <Servo.h>
+#include <VarSpeedServo.h>
 
 class Wheel {
 
 private:
   int pin;
-  Servo servo;
+  VarSpeedServo servo;
 
   byte upPosition = 0;
   byte downPosition = 177;

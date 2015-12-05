@@ -5,8 +5,8 @@
  * 
  */
 
-#include <Servo.h>
 
+#include <VarSpeedServo.h>
 #include "unlocker.h"
 #include "wheel.h"
 #include "dispatcher.h"
@@ -43,6 +43,8 @@ void setup() {
 
 void loop() {
 
+  unlocker->turn();
+  
   // feedTheWheel: on collecte un bonbon depuis le puit.
 
   wheel->moveMiddle();
