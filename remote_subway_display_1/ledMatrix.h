@@ -7,7 +7,6 @@ class LedMatrix {
 
  private :
 
- 
 int d;
 int c;
 int b;

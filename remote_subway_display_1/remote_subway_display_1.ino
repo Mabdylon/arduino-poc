@@ -1,5 +1,5 @@
 #include "ledMatrix.h"
-//#include "esp8266.h"
+#include "esp8266.h"
 
 const int ledDPin = 12;
 const int ledCPin = 11;
@@ -11,6 +11,7 @@ const int ledClockPin = 6;
 const int ledLatchPin = 5;
 
 LedMatrix* ledMatrix;
+Esp8266* esp8266;
 
 int testPatern1[16] = {
  0b0010000001111100,
@@ -50,26 +51,16 @@ int testPatern2[16] = {
 
 void setup() {
 
-  Serial.begin(9600);
+  esp8266 = new Esp8266();
+  esp8266->connectWifi();
   ledMatrix = new LedMatrix(ledAPin, ledBPin,
                             ledCPin, ledDPin, ledDataPin, ledClockPin, ledLatchPin);
 
 }
 
 void loop() {
-  /*digitalWrite(11, HIGH);
-   digitalWrite(5, 0);
-  shiftOut(7, 6, 0);
-  shiftOut(7, 6, 0);
-  digitalWrite(5, 1);
-  delay(200);*/
 
-  for(int i = 0; i <100; i++) {
+    esp8266->getWebPage();
     ledMatrix->drawBytes(testPatern1);  
-  }
-  for(int i = 0; i <100; i++) {
-    ledMatrix->drawBytes(testPatern2);  
-  }
-  
 
 }
