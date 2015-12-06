@@ -6,6 +6,8 @@
 class Esp8266 {
 
  private :
+int rxPin;
+int txPin;
 
 String content;
 
@@ -13,8 +15,9 @@ String content;
   
   Esp8266();
 
-  void connectWifi();
+  boolean connectWifi();
   void getWebPage();
+  void talkMode();
 
 };
 

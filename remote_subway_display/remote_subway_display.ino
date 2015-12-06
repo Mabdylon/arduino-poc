@@ -50,17 +50,23 @@ int testPatern2[16] = {
  0b0111000011111110};
 
 void setup() {
-
-  esp8266 = new Esp8266();
-  esp8266->connectWifi();
   ledMatrix = new LedMatrix(ledAPin, ledBPin,
                             ledCPin, ledDPin, ledDataPin, ledClockPin, ledLatchPin);
-
+  Serial.begin(115200);
+  esp8266 = new Esp8266();
+  boolean connected = false;
+  while(!connected) {
+    connected = esp8266->connectWifi();
+    delay(3000);
+  }
 }
 
 void loop() {
 
+  //AT+CIPSTART="TCP","93.184.220.20",80
+  //  esp8266->talkMode();
     esp8266->getWebPage();
-    ledMatrix->drawBytes(testPatern1);  
+    /*ledMatrix->drawBytes(testPatern1);  
+    delay(1000);*/
 
 }
