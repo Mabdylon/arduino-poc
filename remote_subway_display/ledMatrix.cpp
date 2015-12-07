@@ -27,8 +27,8 @@ void LedMatrix::drawBytes(int pattern[16]) {
     digitalWrite(c, bitRead(i, 2));
     digitalWrite(d, bitRead(i, 3));
     digitalWrite(latch, LOW);
-    shiftOut(data, clk, MSBFIRST, highByte(~pattern[i]));
-    shiftOut(data, clk, MSBFIRST, lowByte(~pattern[i]));
+    shiftOut(data, clk, LSBFIRST, highByte(pattern[i]));
+    shiftOut(data, clk, LSBFIRST, lowByte(pattern[i]));
     digitalWrite(latch, HIGH);
     delay(1);
   }

@@ -1,32 +1,36 @@
-#include <doxygen.h>
-#include <ESP8266.h>
+/**
+ * @example HTTPGET.ino
+ * @brief The HTTPGET demo of library WeeESP8266. 
+ * @author Wu Pengfei<pengfei.wu@itead.cc> 
+ * @date 2015.03
+ * 
+ * @par Copyright:
+ * Copyright (c) 2015 ITEAD Intelligent Systems Co., Ltd. \n\n
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version. \n\n
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 
-#include "ledMatrix.h"
-#include "secrets.h"
-#include "fonts.h"
+#include "ESP8266.h"
 
+#define SSID        "ITEAD"
+#define PASSWORD    "12345678"
 #define HOST_NAME   "www.baidu.com"
 #define HOST_PORT   (80)
 
+ESP8266 wifi(Serial1);
 
-const int ledDPin = 12;
-const int ledCPin = 11;
-const int ledBPin = 10;
-const int ledAPin = 9;
-
-const int ledDataPin = 7;
-const int ledClockPin = 6;
-const int ledLatchPin = 5;
-
-LedMatrix* ledMatrix;
-SoftwareSerial mySerial(2, 3); /* RX:D2, TX:D3 */
-ESP8266 wifi(mySerial);
-
-void setup() {
-  ledMatrix = new LedMatrix(ledAPin, ledBPin,
-                            ledCPin, ledDPin, ledDataPin, ledClockPin, ledLatchPin);
-  /*Serial.begin(115200);
-
+void setup(void)
+{
+    Serial.begin(9600);
     Serial.print("setup begin\r\n");
 
     Serial.print("FW Version:");
@@ -38,7 +42,7 @@ void setup() {
         Serial.print("to station + softap err\r\n");
     }
 
-    if (wifi.joinAP(Secrets::WIFI_SSID(), Secrets::WIFI_PASSWORD())) {
+    if (wifi.joinAP(SSID, PASSWORD)) {
         Serial.print("Join AP success\r\n");
 
         Serial.print("IP:");
@@ -53,13 +57,12 @@ void setup() {
         Serial.print("single err\r\n");
     }
     
-    Serial.print("setup end\r\n");*/
-
+    Serial.print("setup end\r\n");
 }
-
-void loop() {
-  /*Serial.println("begin loop");
-  uint8_t buffer[1024] = {0};
+ 
+void loop(void)
+{
+    uint8_t buffer[1024] = {0};
 
     if (wifi.createTCP(HOST_NAME, HOST_PORT)) {
         Serial.print("create tcp ok\r\n");
@@ -83,17 +86,9 @@ void loop() {
         Serial.print("release tcp ok\r\n");
     } else {
         Serial.print("release tcp err\r\n");
-    }*/
-
-
-  //AT+CIPSTART="TCP","93.184.220.20",80
-  //  esp8266->talkMode();
-  //  esp8266->getWebPage();
-
-  for(int i = 0; i < 9; i++) {
-      for(int j = 0; j < 250; j++) {
-        ledMatrix->drawBytes(Fonts::getNumber(i));        
-      }
-  }
-  
+    }
+    
+    while(1);
+    
 }
+     
