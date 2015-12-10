@@ -1,3 +1,5 @@
+#include <SoftwareSerial.h>
+
 #include "ledMatrix.h"
 #include "secrets.h"
 #include "fonts.h"
