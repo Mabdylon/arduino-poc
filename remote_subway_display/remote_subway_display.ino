@@ -29,10 +29,10 @@ void loop() {
   //  esp8266->talkMode();
   //  esp8266->getWebPage();
 
-  /*for(int i = 0; i < 9; i++) {
+  for(int i = 0; i < 9; i++) {
       for(int j = 0; j < 250; j++) {
         ledMatrix->drawBytes(Fonts::getNumber(i));        
       }
-  }*/
+  }
   
 }
