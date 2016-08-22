@@ -177,9 +177,8 @@ void loop() {
       || (memcmp(goodCard3, mfrc522.uid.uidByte, mfrc522.uid.size) == 0)
       || (memcmp(goodCard4, mfrc522.uid.uidByte, mfrc522.uid.size) == 0)
       || (memcmp(goodCard5, mfrc522.uid.uidByte, mfrc522.uid.size) == 0)
-      )
-  mp1mth7mm!
-  
+      ) {
+
     Serial.write('i');
     // Log unlog mode
     // Serial.write((isLogged ? 'o' : 'i'));
